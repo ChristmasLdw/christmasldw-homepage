@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChristmasLdw - 工具集</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e17;--bg2:#111827;--bg3:#1a2332;--bg4:#243044;
+  --bd:#2a3a4e;--t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;
+  --blue:#3b82f6;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;
+  --purple:#8b5cf6;--cyan:#06b6d4;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh}
+
+.header{background:linear-gradient(135deg,#0f172a,#1e293b);border-bottom:1px solid var(--bd);padding:14px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff}
+.logo-text{font-size:17px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.logo-sub{font-size:10px;color:var(--t3);margin-top:0}
+
+.search-wrap{position:relative;flex:1;max-width:420px;margin:0 auto}
+.search-box{width:100%;padding:9px 14px 9px 38px;background:var(--bg3);border:1px solid var(--bd);border-radius:10px;color:var(--t1);font-size:13px;outline:none;transition:all .2s}
+.search-box:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:13px;pointer-events:none}
+
+.header-right{display:flex;align-items:center;gap:14px;flex-shrink:0;font-size:12px;color:var(--t2);white-space:nowrap}
+.clock{text-align:right;line-height:1.5}
+.clock-time{font-size:15px;font-weight:600;color:var(--t1);font-variant-numeric:tabular-nums}
+.clock-date{font-size:11px;color:var(--t3)}
+.weather{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:6px 12px}
+.weather-icon{font-size:20px}
+.weather-temp{font-size:16px;font-weight:700;color:var(--t1)}
+.weather-desc{font-size:11px;color:var(--t3)}
+
+.main{max-width:1100px;margin:0 auto;padding:32px 20px 60px}
+.welcome{margin-bottom:32px}
+.welcome h2{font-size:28px;font-weight:700;margin-bottom:8px}
+.welcome p{color:var(--t2);font-size:15px;line-height:1.6}
+.welcome span{color:var(--blue)}
+
+.section-title{font-size:13px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:40px}
+
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:24px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 8px 30px rgba(59,130,246,.12)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;opacity:0;transition:opacity .25s}
+.card:hover::before{opacity:1}
+.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card-title{font-size:17px;font-weight:700;margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:14px}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.card-link{font-size:12px;color:var(--blue);margin-top:12px;display:flex;align-items:center;gap:4px}
+
+.card-blue .card-icon{background:rgba(59,130,246,.12);color:var(--blue)}
+.card-blue::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.card-blue .tag{background:rgba(59,130,246,.1);color:var(--blue)}
+
+.card-green .card-icon{background:rgba(16,185,129,.12);color:var(--green)}
+.card-green::before{background:linear-gradient(90deg,var(--green),#34d399)}
+.card-green .tag{background:rgba(16,185,129,.1);color:var(--green)}
+
+.card-purple .card-icon{background:rgba(139,92,246,.12);color:var(--purple)}
+.card-purple::before{background:linear-gradient(90deg,var(--purple),#ec4899)}
+.card-purple .tag{background:rgba(139,92,246,.1);color:var(--purple)}
+
+.card-orange .card-icon{background:rgba(249,115,22,.12);color:#f97316}
+.card-orange::before{background:linear-gradient(90deg,#f97316,#f59e0b)}
+.card-orange .tag{background:rgba(249,115,22,.1);color:#f97316}
+.card-teal .card-icon{background:rgba(20,184,166,.12);color:#14b8a6}
+.card-teal::before{background:linear-gradient(90deg,#14b8a6,#06b6d4)}
+.card-teal .tag{background:rgba(20,184,166,.1);color:#14b8a6}
+.card-gold .card-icon{background:rgba(245,158,11,.12);color:#f59e0b}
+.card-gold::before{background:linear-gradient(90deg,#f59e0b,#eab308)}
+.card-gold .tag{background:rgba(245,158,11,.1);color:#f59e0b}
+
+
+.footer{text-align:center;padding:32px 20px;color:var(--t3);font-size:12px;border-top:1px solid var(--bd)}
+.footer a{color:var(--blue);text-decoration:none}
+
+.card.hidden{display:none!important}
+
+@media(max-width:640px){
+  .header-inner{flex-wrap:wrap;justify-content:center}
+  .logo{order:1}
+  .search-wrap{order:3;margin:8px 0 0;max-width:100%;flex-basis:100%}
+  .header-right{order:2;margin-left:auto}
+  .clock-date{display:none}
+  .grid{grid-template-columns:1fr}
+  .welcome h2{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">L</div>
+      <div>
+        <div class="logo-text">ChristmasLdw</div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input class="search-box" id="searchInput" placeholder="搜索工具..." oninput="filterCards(this.value)">
+    </div>
+    <div class="header-right">
+      <div class="clock">
+        <div class="clock-time" id="clockTime">--:--:--</div>
+        <div class="clock-date" id="clockDate">----年--月--日 周-</div>
+      </div>
+      <div class="weather" id="weatherBox">
+        <span class="weather-icon" id="weatherIcon">&#9728;&#65039;</span>
+        <div>
+          <div class="weather-temp" id="weatherTemp">--°C</div>
+          <div class="weather-desc" id="weatherDesc">加载中...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="welcome">
+    <h2>欢迎来到 <span>ChristmasLdw</span> 工具集</h2>
+    <p>这里集合了各种实用工具，点击卡片开始使用，或使用上方搜索框快速查找。</p>
+  </div>
+
+  <div class="section-title">全部工具</div>
+  <div class="grid" id="cardGrid">
+
+    <a class="card card-blue" href="/cs2/" target="_blank">
+      <div class="card-icon"><img src="/icons/cs2.png" alt="CS2" style="width:28px;height:28px"></div>
+      <div class="card-title">CS2 武器箱比价</div>
+      <div class="card-desc">实时对比 Steam 市场与 Buff / IGXE / YYYP 等第三方平台的武器箱价格，找出最划算的买入时机。</div>
+      <div class="card-tags">
+        <span class="tag">CS2</span>
+        <span class="tag">比价</span>
+        <span class="tag">Steam</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-green" href="/steam/" target="_blank">
+      <div class="card-icon"><img src="/icons/steam.png" alt="Steam" style="width:28px;height:28px"></div>
+      <div class="card-title">Steam 玩家统计</div>
+      <div class="card-desc">查看 Steam 游戏的当前在线人数、24小时峰值、历史趋势等玩家数据。</div>
+      <div class="card-tags">
+        <span class="tag">Steam</span>
+        <span class="tag">数据统计</span>
+        <span class="tag">玩家在线</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-purple" href="/ai/" target="_blank">
+      <div class="card-icon"><img src="/icons/ai.png" alt="AI" style="width:28px;height:28px"></div>
+      <div class="card-title">AI Token 监控</div>
+      <div class="card-desc">监控 OpenAI / Claude / Gemini 等 AI 大模型的 API 额度余量，额度不足时自动提醒。</div>
+      <div class="card-tags">
+        <span class="tag">AI</span>
+        <span class="tag">监控</span>
+        <span class="tag">API</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-orange" href="/pov/" target="_blank">
+      <div class="card-icon"><img src="/icons/valorant.png" alt="Valorant" style="width:28px;height:28px"></div>
+      <div class="card-title">无畏契约 POV</div>
+      <div class="card-desc">职业选手第一视角推荐，按地图、英雄、教学分类浏览，提升你的 Valorant 技巧。</div>
+      <div class="card-tags">
+        <span class="tag">Valorant</span>
+        <span class="tag">POV</span>
+        <span class="tag">教学</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-cyan" href="/terminal/" target="_blank">
+      <div class="card-icon"><img src="/icons/terminal.png" alt="Terminal" style="width:28px;height:28px"></div>
+      <div class="card-title">终端 + AI 助手</div>
+      <div class="card-desc">Web 终端模拟器 + 多模型 AI 对话，支持 OpenAI / Claude / Gemini，自带 API 即可使用。</div>
+      <div class="card-tags">
+        <span class="tag">终端</span>
+        <span class="tag">AI 对话</span>
+        <span class="tag">多模型</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-teal" href="/eu-doc/" target="_blank">
+      <div class="card-icon"><img src="/icons/certificate.png" alt="Certificate" style="width:28px;height:28px"></div>
+      <div class="card-title">EU-DOC 证书查询</div>
+      <div class="card-desc">欧盟证书查询系统，支持证书管理、公司信息录入与统计，企业级文档管理工具。</div>
+      <div class="card-tags">
+        <span class="tag">证书</span>
+        <span class="tag">文档</span>
+        <span class="tag">EU</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+    <a class="card card-gold" href="/finance-tracker/" target="_blank">
+      <div class="card-icon"><img src="/icons/finance.png" alt="Finance" style="width:28px;height:28px"></div>
+      <div class="card-title">港股回购分红追踪</div>
+      <div class="card-desc">追踪腾讯、小米、泡泡玛特每日回购与分红动态，数据来源：港交所披露易官方公告。</div>
+      <div class="card-tags">
+        <span class="tag">港股</span>
+        <span class="tag">回购</span>
+        <span class="tag">分红</span>
+        <span class="tag">HKEX</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+
+
+  </div>
+</main>
+
+<footer class="footer">
+  ChristmasLdw &copy; 2026 &middot; <a href="https://christmasldw.com" target="_blank">christmasldw.com</a>
+</footer>
+
+<script>
+// ===== 搜索功能 =====
+function filterCards(keyword) {
+  const k = keyword.trim().toLowerCase();
+  const cardGrid = document.getElementById('cardGrid');
+  const cards = cardGrid.querySelectorAll('.card');
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+    const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase()).join(' ');
+    const match = !k || title.includes(k) || desc.includes(k) || tags.includes(k);
+    card.classList.toggle('hidden', !match);
+  });
+}
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const first = document.querySelector('.card:not(.hidden)');
+    if (first) first.click();
+  }
+});
+
+// ===== 时钟功能 =====
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
+  document.getElementById('clockTime').textContent = h + ':' + m + ':' + s;
+
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
+  const weekDay = weekDays[now.getDay()];
+  document.getElementById('clockDate').textContent = year + '年' + month + '月' + day + '日 周' + weekDay;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+// ===== 天气功能（杭州）=====
+function getWeatherIcon(desc) {
+  const d = (desc || '').toLowerCase();
+  if (d.includes('sun') || d.includes('晴')) return '\u2600\uFE0F';
+  if (d.includes('cloud') || d.includes('云')) return '\u2601\uFE0F';
+  if (d.includes('rain') || d.includes('雨')) return '\uD83C\uDF27\uFE0F';
+  if (d.includes('snow') || d.includes('雪')) return '\u2744\uFE0F';
+  if (d.includes('thunder') || d.includes('雷')) return '\u26C5\uFE0F';
+  if (d.includes('fog') || d.includes('雾') || d.includes('haze')) return '\uD83C\uDF2B\uFE0F';
+  if (d.includes('overcast') || d.includes('阴')) return '\u2601\uFE0F';
+  return '\u2600\uFE0F';
+}
+
+async function fetchWeather() {
+  try {
+    const r = await fetch('/api/weather');
+    if (!r.ok) throw new Error('weather fetch failed');
+    const data = await r.json();
+    const cur = data.current_condition[0];
+    const desc = cur.weatherDesc[0].value;
+    const temp = cur.temp_C;
+    document.getElementById('weatherIcon').textContent = getWeatherIcon(desc);
+    document.getElementById('weatherTemp').textContent = temp + '°C';
+    document.getElementById('weatherDesc').textContent = desc;
+  } catch(e) {
+    document.getElementById('weatherDesc').textContent = '天气获取失败';
+  }
+}
+fetchWeather();
+setInterval(fetchWeather, 600000); // 每10分钟更新一次
+</script>
+</body>
+</html>
