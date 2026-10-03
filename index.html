@@ -11,7 +11,7 @@
   --bg:#0a0e17;--bg2:#111827;--bg3:#1a2332;--bg4:#243044;
   --bd:#2a3a4e;--t1:#e2e8f0;--t2:#94a3b8;--t3:#64748b;
   --blue:#3b82f6;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;
-  --purple:#8b5cf6;--cyan:#06b6d4;
+  --purple:#8b5cf6;--cyan:#06b6d4;--pink:#ec4899;
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh}
 
@@ -78,6 +78,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .card-gold .card-icon{background:rgba(245,158,11,.12);color:#f59e0b}
 .card-gold::before{background:linear-gradient(90deg,#f59e0b,#eab308)}
 .card-gold .tag{background:rgba(245,158,11,.1);color:#f59e0b}
+.card-rose .card-icon{background:rgba(236,72,153,.12);color:var(--pink)}
+.card-rose::before{background:linear-gradient(90deg,var(--pink),#f97316)}
+.card-rose .tag{background:rgba(236,72,153,.1);color:var(--pink)}
 
 
 .footer{text-align:center;padding:32px 20px;color:var(--t3);font-size:12px;border-top:1px solid var(--bd)}
@@ -135,6 +138,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   <div class="section-title">全部工具</div>
   <div class="grid" id="cardGrid">
 
+    <a class="card card-rose" href="/cat-sudoku/" target="_blank" rel="noopener">
+      <div class="card-icon" aria-hidden="true">🐱</div>
+      <div class="card-title">猫猫数独</div>
+      <div class="card-desc">每行、每列、每种颜色各一只猫，猫猫之间不能相邻。62 关逻辑挑战，搭配直观提示与假设推理，慢慢找到答案。</div>
+      <div class="card-tags">
+        <span class="tag">益智游戏</span>
+        <span class="tag">逻辑推理</span>
+        <span class="tag">62 关</span>
+      </div>
+      <div class="card-link">开始游戏 &#8594;</div>
+    </a>
+
     <a class="card card-blue" href="/cs2/" target="_blank">
       <div class="card-icon"><img src="/icons/cs2.png" alt="CS2" style="width:28px;height:28px"></div>
       <div class="card-title">CS2 武器箱比价</div>
@@ -159,18 +174,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
       <div class="card-link">打开工具 &#8594;</div>
     </a>
 
-    <a class="card card-purple" href="/token/" target="_blank">
-      <div class="card-icon"><img src="/icons/ai.png" alt="AI" style="width:28px;height:28px"></div>
-      <div class="card-title">Token 监控</div>
-      <div class="card-desc">监控 OpenAI / Claude / Gemini 等 AI 大模型的 API 额度余量，额度不足时自动提醒。</div>
-      <div class="card-tags">
-        <span class="tag">AI</span>
-        <span class="tag">监控</span>
-        <span class="tag">API</span>
-      </div>
-      <div class="card-link">打开工具 &#8594;</div>
-    </a>
-
     <a class="card card-orange" href="/pov/" target="_blank">
       <div class="card-icon"><img src="/icons/valorant.png" alt="Valorant" style="width:28px;height:28px"></div>
       <div class="card-title">无畏契约 POV</div>
@@ -179,18 +182,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
         <span class="tag">Valorant</span>
         <span class="tag">POV</span>
         <span class="tag">教学</span>
-      </div>
-      <div class="card-link">打开工具 &#8594;</div>
-    </a>
-
-    <a class="card card-cyan" href="/ai/" target="_blank">
-      <div class="card-icon"><img src="/icons/terminal.png" alt="Terminal" style="width:28px;height:28px"></div>
-      <div class="card-title">AI 助手</div>
-      <div class="card-desc">Web 终端模拟器 + 多模型 AI 对话，支持 OpenAI / Claude / Gemini，自带 API 即可使用。</div>
-      <div class="card-tags">
-        <span class="tag">终端</span>
-        <span class="tag">AI 对话</span>
-        <span class="tag">多模型</span>
       </div>
       <div class="card-link">打开工具 &#8594;</div>
     </a>
@@ -218,22 +209,128 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
       </div>
       <div class="card-link">打开工具 &#8594;</div>
     </a>
+    <a class="card card-rose" href="/watchlist/" target="_blank">
+      <div class="card-icon">&#9654;</div>
+      <div class="card-title">待看视频清单</div>
+      <div class="card-desc">收藏各种待看的视频链接，支持人物、主题和分类整理，手机电脑都能快速跳转观看。</div>
+      <div class="card-tags">
+        <span class="tag">视频</span>
+        <span class="tag">分类</span>
+        <span class="tag">B站</span>
+      </div>
+      <div class="card-link">打开清单 &#8594;</div>
+    </a>
 
+    <a class="card card-green" href="/fitness/" target="_blank" rel="noopener">
+      <div class="card-icon">&#127947;&#65039;</div>
+      <div class="card-title">健身数据看板</div>
+      <div class="card-desc">体重、体脂率、脂肪量、瘦体重与腰围趋势，训练记录、运动消耗与步数，另附 2019 年至今的全历史体成分对比。手机电脑均可查看。</div>
+      <div class="card-tags">
+        <span class="tag">健身</span>
+        <span class="tag">体成分</span>
+        <span class="tag">趋势</span>
+        <span class="tag">训练</span>
+      </div>
+      <div class="card-link">打开看板 &#8594;</div>
+    </a>
 
+    <a class="card card-teal" href="/research/" target="_blank">
+      <div class="card-icon">&#128196;</div>
+      <div class="card-title">研究文章</div>
+      <div class="card-desc">集中存放财报拆解、公司研究和投资分析长文；点击进入文章集合页继续浏览。</div>
+      <div class="card-tags">
+        <span class="tag">财报</span>
+        <span class="tag">投资分析</span>
+        <span class="tag">长文</span>
+      </div>
+      <div class="card-link">打开文章 &#8594;</div>
+    </a>
+
+    <a class="card card-orange" href="/shipping-tool/" target="_blank">
+      <div class="card-icon">&#128230;</div>
+      <div class="card-title">出货清单</div>
+      <div class="card-desc">上传表格后生成出货清单，支持网页核验、图片对照和样式版 Excel 输出。</div>
+      <div class="card-tags">
+        <span class="tag">出货</span>
+        <span class="tag">Excel</span>
+        <span class="tag">核验</span>
+      </div>
+      <div class="card-link">打开工具 &#8594;</div>
+    </a>
+
+    <a class="card card-purple" href="https://lantecho.christmasldw.com/" target="_blank" rel="noopener">
+      <div class="card-icon">&#10024;</div>
+      <div class="card-title">Lantecho 澜图回声</div>
+      <div class="card-desc">统一登录与个人回声空间，创建、编辑和发布可交互的网页内容。</div>
+      <div class="card-tags">
+        <span class="tag">Lantecho</span>
+        <span class="tag">回声</span>
+        <span class="tag">创作</span>
+      </div>
+      <div class="card-link">打开界面 &#8594;</div>
+    </a>
+
+    <a class="card card-blue" href="/dsh/" target="_blank" rel="noopener">
+      <div class="card-icon">&#129302;</div>
+      <div class="card-title">DeepSeek Harness</div>
+      <div class="card-desc">使用 Lantecho 账号登录，配置自己的 API Key，在独立工作区中处理文件、编写代码并预览 HTML。</div>
+      <div class="card-tags">
+        <span class="tag">AI 编程</span>
+        <span class="tag">自带 API</span>
+        <span class="tag">在线预览</span>
+      </div>
+      <div class="card-link">进入工作区 &#8594;</div>
+    </a>
+
+  </div>
+
+  <div class="section-title">项目页面</div>
+  <div class="grid project-grid">
+    <a class="card card-blue" href="https://hong.christmasldw.com/" target="_blank" rel="noopener">
+      <div class="card-icon">&#127912;</div>
+      <div class="card-title">Hong</div>
+      <div class="card-desc">Hong 项目页面，进入站点查看相关内容与功能。</div>
+      <div class="card-tags">
+        <span class="tag">项目</span>
+        <span class="tag">网页</span>
+      </div>
+      <div class="card-link">打开 Hong &#8594;</div>
+    </a>
+
+    <a class="card card-green" href="https://chu.christmasldw.com/" target="_blank" rel="noopener">
+      <div class="card-icon">&#127760;</div>
+      <div class="card-title">Chu</div>
+      <div class="card-desc">Chu 项目页面，进入站点查看相关内容与功能。</div>
+      <div class="card-tags">
+        <span class="tag">项目</span>
+        <span class="tag">网页</span>
+      </div>
+      <div class="card-link">打开 Chu &#8594;</div>
+    </a>
+
+    <a class="card card-orange" href="https://cocorrina.christmasldw.com/" target="_blank" rel="noopener">
+      <div class="card-icon">&#128156;</div>
+      <div class="card-title">Cocorrina</div>
+      <div class="card-desc">创作者运营共享工作台，使用 Lantecho 账号登录；密码只在 Lantecho 域名输入，Cocorrina 不保存密码。</div>
+      <div class="card-tags">
+        <span class="tag">项目</span>
+        <span class="tag">网页</span>
+      </div>
+      <div class="card-link">打开 Cocorrina &#8594;</div>
+    </a>
 
   </div>
 </main>
 
 <footer class="footer">
-  ChristmasLdw &copy; 2026 &middot; <a href="https://christmasldw.com" target="_blank">christmasldw.com</a>
+  ChristmasLdw &copy; 2026 &middot; <a href="https://christmasldw.com" target="_blank">christmasldw.com</a> &middot; <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">浙ICP备2025178971号</a>
 </footer>
 
 <script>
 // ===== 搜索功能 =====
 function filterCards(keyword) {
   const k = keyword.trim().toLowerCase();
-  const cardGrid = document.getElementById('cardGrid');
-  const cards = cardGrid.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.grid .card');
   cards.forEach(card => {
     const title = card.querySelector('.card-title').textContent.toLowerCase();
     const desc = card.querySelector('.card-desc').textContent.toLowerCase();
