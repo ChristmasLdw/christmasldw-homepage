@@ -28,10 +28,16 @@ python3 -m http.server 8080
 ## 猫猫数独
 
 - 入口：`/cat-sudoku/`，首页新增同名功能卡片。
-- 完整源码、关卡和测试位于 `cat-sudoku/`。游戏不需要数据库或后端。
+- 完整源码、关卡和测试已拆分至独立仓库：[ChristmasLdw/cat-sudoku](https://github.com/ChristmasLdw/cat-sudoku)。本仓库只维护首页入口卡片。游戏不需要数据库或后端。
 - 发布游戏时，仅需上传 `index.html`、`styles.css`、`engine.js`、`trial.js`、`levels.js`、`hints.js`、`tutorial.js`、`journey.js`、`app.js` 到站点的 `cat-sudoku/` 子目录；首页上传根目录的 `index.html`。
 - 网站根目录以服务器实际配置为准。更新前备份首页；先发布游戏，再更新入口，避免出现打不开的卡片。
 - 本次首页以 2026-10-03 的线上版本为基准，保留已有工具、项目入口和备案信息。
+- 部署首页时不要清空站点目录，也不要用删除未跟踪文件的同步方式覆盖服务器：`cat-sudoku/` 和 `games/crowd-trip/` 的运行文件分别维护，必须保留。
+
+## 小人上车
+
+- 入口：`/games/crowd-trip/`，首页保留同名功能卡片。
+- 游戏独立备份仓库：[ChristmasLdw/crowd-trip](https://github.com/ChristmasLdw/crowd-trip)。游戏源码不放在首页仓库内。
 
 ## 修改指南
 - `index.html` - 主页面
